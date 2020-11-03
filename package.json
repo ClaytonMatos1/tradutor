@@ -1,0 +1,18 @@
+{
+  "name": "tradutor",
+  "version": "1.0.0",
+  "description": "Simple app electron tradutor",
+  "main": "main.js",
+  "scripts": {
+    "preinstall": "npm install",
+    "start": "electron ."
+  },
+  "author": "Clayton Matos",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  },
+  "dependencies": {
+    "google-translate-open-api": "^1.3.5"
+  }
+}

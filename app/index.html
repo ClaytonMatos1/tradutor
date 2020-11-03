@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Tradutor</title>
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>App Tradutor</h1>
+    </div>
+    <div class="content">
+        <label for="englishText">Digitar o Texto:</label>
+        <input type="text" name="english-text" id="englishText">
+
+        <button id="btnTradutor">Tradução</button>
+        <div class="result">
+            <span id="resultText"></span>
+        </div>
+    </div>
+
+    <script>require('./public/js/renderer.js');</script>
+</body>
+</html>

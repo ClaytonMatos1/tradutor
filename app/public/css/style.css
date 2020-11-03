@@ -1,0 +1,42 @@
+body {
+    background-color: #faebd7;
+}
+
+.main, .content, .result {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.content input, .content button {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.content input {
+    width: 80%;
+}
+
+.content button {
+    background-color: #0000FF;
+    width: 60%;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.result {
+    width: 80%;
+    min-height: 50px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
