@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Sobre App Tradutor</title>
+</head>
+<body>
+    <div class="container">
+        <img src="../img/icon.ico" alt="Logo">
+        <p>Realizar traduções de inglês para português.</p>
+        <p>Versão: <span id="versionApp"></span></p>
+        <p>Feito por: <a href="#" id="linkGithub">Clayton Matos</a></p>
+        <p>Versão Electron: <script>document.write(process.versions.electron)</script></p>
+        <a href="#" id="linkClose">Fechar</a>
+    </div>
+
+    <script>require('../js/about.js');</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
+const template = require('./app/js/template');
 
 function createWindow () {
     const win = new BrowserWindow({
@@ -12,6 +13,10 @@ function createWindow () {
     });
 
     win.loadURL(`file://${__dirname}/app/index.html`);
+
+    let templateMenu = template.generateMainMenu(app);
+    let mainMenu = Menu.buildFromTemplate(templateMenu);
+    Menu.setApplicationMenu(mainMenu);
 }
 
 app.whenReady().then(createWindow);
