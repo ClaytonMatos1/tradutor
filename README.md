@@ -1,0 +1,2 @@
+# tradutor
+App electron - tradutor
