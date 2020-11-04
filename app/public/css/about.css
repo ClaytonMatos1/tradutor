@@ -1,7 +1,35 @@
+body {
+    margin-bottom: 0px;
+}
+
 .container {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
 }
 
 .container p {
     margin: 5px 0;
+    font-size: 0.8em;
+}
+
+.logo {
+    margin-right: 10px;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer button {
+    background-color: #0000FF;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    cursor: pointer;
 }

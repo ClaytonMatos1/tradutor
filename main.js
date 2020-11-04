@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu,ipcMain } = require('electron');
 const template = require('./app/js/template');
 
 function createWindow () {
@@ -13,6 +13,11 @@ function createWindow () {
     });
 
     win.loadURL(`file://${__dirname}/app/index.html`);
+    win.on('closed', () => {
+        if (aboutWindow) {
+            aboutWindow.close();
+        }
+    });
 
     let templateMenu = template.generateMainMenu(app);
     let mainMenu = Menu.buildFromTemplate(templateMenu);
@@ -31,4 +36,33 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+});
+
+let aboutWindow = null;
+ipcMain.on('open-window-about', () => {
+    if (!aboutWindow) {
+        aboutWindow = new BrowserWindow({
+            width: 320,
+            height: 220,
+            icon: `file://${__dirname}/app/img/icon.ico`,
+            alwaysOnTop: true,
+            maximizable: false,
+            minimizable: false,
+            resizable: false,
+            webPreferences: {
+                nodeIntegration: true
+            }
+        });
+
+        aboutWindow.on('closed', () => {
+            aboutWindow = null;
+        });
+        aboutWindow.removeMenu();
+    }
+
+    aboutWindow.loadURL(`file://${__dirname}/app/public/html/about.html`);
+});
+
+ipcMain.on('close-window-about', () => {
+    aboutWindow.close();
 });

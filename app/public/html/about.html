@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <title>Sobre App Tradutor</title>
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
     <div class="container">
-        <img src="../img/icon.ico" alt="Logo">
-        <p>Realizar traduções de inglês para português.</p>
-        <p>Versão: <span id="versionApp"></span></p>
-        <p>Feito por: <a href="#" id="linkGithub">Clayton Matos</a></p>
-        <p>Versão Electron: <script>document.write(process.versions.electron)</script></p>
-        <a href="#" id="linkClose">Fechar</a>
+        <div class="logo">
+            <img src="../img/icon.ico" alt="Logo">
+        </div>
+        <div>
+            <p>Realizar traduções de inglês para português.</p>
+            <p>Versão: <span id="versionApp"></span></p>
+            <p>Feito por: <a href="#" id="linkGithub">Clayton Matos</a></p>
+            <p>Electron: <script>document.write(process.versions.electron)</script></p>
+            <p>Node: <script>document.write(process.versions.node)</script></p>
+            <p>Chromium: <script>document.write(process.versions.chrome)</script></p>
+        </div>
+    </div>
+    <div class="footer">
+        <button id="linkClose">Fechar</button>
     </div>
 
     <script>require('../js/about.js');</script>
