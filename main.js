@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu,ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const template = require('./app/js/template');
 
 function createWindow () {
@@ -6,7 +6,8 @@ function createWindow () {
         width: 450,
         height: 400,
         backgroundColor: '#faebd7',
-        icon: `file://${__dirname}/app/img/icon.ico`,
+        icon: `${__dirname}/app/public/img/icon.ico`,
+        darkTheme: true,
         webPreferences: {
             nodeIntegration: true
         }
@@ -44,7 +45,7 @@ ipcMain.on('open-window-about', () => {
         aboutWindow = new BrowserWindow({
             width: 320,
             height: 220,
-            icon: `file://${__dirname}/app/img/icon.ico`,
+            icon: `${__dirname}/app/public/img/icon.ico`,
             alwaysOnTop: true,
             maximizable: false,
             minimizable: false,
