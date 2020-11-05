@@ -1,4 +1,5 @@
 const { ipcMain } = require('electron');
+const colors = require('../domain/colors');
 
 const isMac = process.platform === 'darwin';
 
@@ -44,5 +45,28 @@ module.exports = {
         ];
 
         return templateMenu;
+    },
+
+    trayTemplate (win) {
+        let template = [
+            {
+                label: 'Cores'
+            },
+            {
+                type: 'separator'
+            }
+        ];
+
+        colors.forEach(name => {
+            let menuItem = {
+                label: name,
+                type: 'radio',
+                click: () => win.send('change-color', name),
+                checked: name === 'antiquewhite' ? true : false
+            };
+            template.push(menuItem);
+        });
+
+        return template;
     }
 }

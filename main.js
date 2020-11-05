@@ -1,8 +1,10 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, Tray } = require('electron');
 const template = require('./app/js/template');
 
+let tray = null;
+let win = null;
 function createWindow () {
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 450,
         height: 400,
         backgroundColor: '#faebd7',
@@ -23,6 +25,12 @@ function createWindow () {
     let templateMenu = template.generateMainMenu(app);
     let mainMenu = Menu.buildFromTemplate(templateMenu);
     Menu.setApplicationMenu(mainMenu);
+
+    tray = new Tray(`${__dirname}/app/public/img/icon.ico`);
+    const contextMenu = template.trayTemplate(win);
+    let trayMenu = Menu.buildFromTemplate(contextMenu);
+    tray.setToolTip('App Tradutor');
+    tray.setContextMenu(trayMenu);
 }
 
 app.whenReady().then(createWindow);
