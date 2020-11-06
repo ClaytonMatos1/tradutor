@@ -7,7 +7,8 @@
     "prestart": "npm install",
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "patch": "npm version patch && git push origin master"
   },
   "author": "Clayton Matos",
   "license": "ISC",
@@ -17,7 +18,8 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^10.1.5"
+    "electron": "^10.1.5",
+    "husky": "^4.3.0"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
@@ -50,6 +52,11 @@
           "config": {}
         }
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "npm run patch"
     }
   }
 }
