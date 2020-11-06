@@ -1,6 +1,6 @@
 {
   "name": "tradutor",
-  "version": "1.0.9",
+  "version": "1.0.8",
   "description": "Simple app electron tradutor",
   "main": "main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "patch": "npm version patch && git push origin master"
+    "patch": "npm version patch"
   },
   "author": "Clayton Matos",
   "license": "ISC",
@@ -52,11 +52,6 @@
           "config": {}
         }
       ]
-    }
-  },
-  "husky": {
-    "hooks": {
-      "post-commit": "npm run patch"
     }
   }
 }
