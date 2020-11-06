@@ -1,6 +1,6 @@
 {
   "name": "tradutor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple app electron tradutor",
   "main": "main.js",
   "scripts": {
