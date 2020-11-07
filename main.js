@@ -34,7 +34,6 @@ async function createWindow () {
     let trayMenu = Menu.buildFromTemplate(contextMenu);
     tray.setToolTip('App Tradutor');
     tray.setContextMenu(trayMenu);
-
 }
 
 app.whenReady().then(createWindow);
