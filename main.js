@@ -1,13 +1,14 @@
 const { app, BrowserWindow, Menu, ipcMain, Tray } = require('electron');
+
 const template = require('./app/js/template');
+const LocalStorageUtils = require('./app/utils/localStorageUtils');
 
 let tray = null;
 let win = null;
-function createWindow () {
+async function createWindow () {
     win = new BrowserWindow({
         width: 450,
         height: 400,
-        backgroundColor: '#faebd7',
         icon: `${__dirname}/app/public/img/icon.ico`,
         darkTheme: true,
         webPreferences: {
@@ -21,16 +22,19 @@ function createWindow () {
             aboutWindow.close();
         }
     });
+    const choicedColor = await LocalStorageUtils.getStorageAppColor(win);
+    win.webContents.send('choiced-color', choicedColor);
 
     let templateMenu = template.generateMainMenu(app);
     let mainMenu = Menu.buildFromTemplate(templateMenu);
     Menu.setApplicationMenu(mainMenu);
 
     tray = new Tray(`${__dirname}/app/public/img/icon.ico`);
-    const contextMenu = template.trayTemplate(win);
+    const contextMenu = await template.trayTemplate(win);
     let trayMenu = Menu.buildFromTemplate(contextMenu);
     tray.setToolTip('App Tradutor');
     tray.setContextMenu(trayMenu);
+
 }
 
 app.whenReady().then(createWindow);

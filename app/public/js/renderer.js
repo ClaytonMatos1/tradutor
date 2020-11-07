@@ -1,6 +1,8 @@
 const { ipcRenderer } = require('electron');
 const translate = require('google-translate-open-api');
 
+const LocalStorageUtils = require('../../utils/localStorageUtils');
+
 const tradButton = document.getElementById('btnTradutor');
 const resultText = document.getElementById('resultText');
 tradButton.addEventListener('click', async () => {
@@ -30,7 +32,16 @@ input.addEventListener('keyup', (ev) => {
 });
 input.focus();
 
-ipcRenderer.on('change-color', (ev, name) => {
+function setBackgroundColor (color) {
     let body = document.body;
-    body.style.backgroundColor = name;
+    body.style.backgroundColor = color;
+}
+
+ipcRenderer.on('change-color', (ev, color) => {
+    setBackgroundColor(color);
+    LocalStorageUtils.setStorageAppColor(window, color);
+});
+
+ipcRenderer.on('choiced-color', (ev, color) => {
+    setBackgroundColor(color);
 });

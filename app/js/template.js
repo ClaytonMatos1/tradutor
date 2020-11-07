@@ -1,5 +1,7 @@
 const { ipcMain } = require('electron');
+
 const colors = require('../domain/colors');
+const LocalStorageUtils = require('../utils/localStorageUtils');
 
 const isMac = process.platform === 'darwin';
 
@@ -47,7 +49,7 @@ module.exports = {
         return templateMenu;
     },
 
-    trayTemplate (win) {
+    async trayTemplate (win) {
         let template = [
             {
                 label: 'Cores'
@@ -57,12 +59,13 @@ module.exports = {
             }
         ];
 
+        const choicedColor = await LocalStorageUtils.getStorageAppColor(win);
         colors.forEach(name => {
             let menuItem = {
                 label: name,
                 type: 'radio',
                 click: () => win.send('change-color', name),
-                checked: name === 'antiquewhite' ? true : false
+                checked: name === choicedColor ? true : false
             };
             template.push(menuItem);
         });
