@@ -17,7 +17,8 @@ tradButton.addEventListener('click', async () => {
     }
 });
 
-copy.addEventListener('click', () => {
+copy.addEventListener('click', (ev) => {
+    ev.preventDefault();
     const selectionRange = document.createRange();
     const selection = window.getSelection();
 
@@ -42,6 +43,15 @@ input.addEventListener('keyup', (ev) => {
     ev.preventDefault();
     if (ev.key === 'Enter') {
         document.getElementById('btnTradutor').click();
+    }
+
+    if (ev.key === 'Escape') {
+        window.setTimeout(() => {
+            if (input.value.length === 0) {
+                resultText.textContent = '';
+                copy.style.display = 'none';
+            }
+        }, 10);
     }
 });
 input.addEventListener('click', (ev) => {
