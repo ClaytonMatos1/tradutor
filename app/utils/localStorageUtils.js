@@ -1,4 +1,5 @@
 const APP_COLOR = 'appColor';
+const SELECTED_LANGUAGE = 'selectedLanguage';
 
 module.exports = {
     setStorageAppColor (window, color) {
@@ -9,5 +10,13 @@ module.exports = {
         let choicedColor = await win.webContents.executeJavaScript(`window.localStorage.getItem('${APP_COLOR}')`, true);
         choicedColor = choicedColor ? choicedColor : 'antiquewhite';
         return choicedColor;
+    },
+
+    setStorageSelectedLanguage (window, selected) {
+        window.localStorage.setItem(SELECTED_LANGUAGE, selected);
+    },
+
+    getStorageSelectedLanguage (window) {
+        return window.localStorage.getItem(SELECTED_LANGUAGE);
     }
 }

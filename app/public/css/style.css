@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Light.ttf) format('truetype');;
+}
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin: 10px 0;
+}
+
 .main, .content {
     display: flex;
     justify-content: center;
@@ -61,10 +73,10 @@
 .result {
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 76%;
     min-height: 50px;
     margin-top: 15px;
-    padding: 15px 15px 0 15px;
+    padding: 8px 8px 0 8px;
     background-color: #FFFFFF;
     border-radius: 5px 5px 0 0;
 }
@@ -72,8 +84,8 @@
 .content-btn {
     display: flex;
     justify-content: flex-end;
-    padding: 0 15px 2px;
-    width: 80%;
+    padding: 0 8px 8px;
+    width: 76%;
     background-color: #FFFFFF;
     height: 22px;
     border-radius: 0 0 5px 5px;

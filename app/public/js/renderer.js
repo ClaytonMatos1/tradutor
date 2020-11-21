@@ -11,6 +11,7 @@ tradButton.addEventListener('click', async () => {
     const text = element.value;
 
     if (text.length) {
+        resultText.textContent = '';
         const response = await tradutor(text);
         resultText.textContent = response;
         copy.style.display = 'block';
@@ -78,3 +79,18 @@ ipcRenderer.on('change-color', (ev, color) => {
 ipcRenderer.on('choiced-color', (ev, color) => {
     setBackgroundColor(color);
 });
+
+const rbLanguages = document.querySelectorAll('input[name="language"]');
+rbLanguages.forEach(item => {
+    item.addEventListener('click', () => {
+        const checked = document.querySelector('input[name="language"]:checked').value;
+        LocalStorageUtils.setStorageSelectedLanguage(window, checked);
+    });
+});
+function setSelectedLanguage () {
+    let selectedLanguage = LocalStorageUtils.getStorageSelectedLanguage(window);
+    if (!selectedLanguage) selectedLanguage = 'en';
+    document.getElementById(`language-${selectedLanguage}`).checked = true;
+    LocalStorageUtils.setStorageSelectedLanguage(window, selectedLanguage);
+}
+setSelectedLanguage();
