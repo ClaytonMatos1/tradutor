@@ -30,10 +30,12 @@ copy.addEventListener('click', (ev) => {
 });
 
 async function tradutor(text) {
+    const checked = document.querySelector('input[name="language"]:checked').value;
     const response = await translate.default(text, {
-        to: 'pt'
+        from: checked,
+        to: checked == 'en' ? 'pt' : 'en'
     });
-    const data = response.data[0];
+    const data = response.data;
     return data;
 }
 

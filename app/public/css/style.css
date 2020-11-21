@@ -15,7 +15,37 @@
     border-radius: 5px;
 }
 
-.content input {
+.language {
+    display: flex;
+    justify-content: space-between;
+    width: 12%;
+}
+
+.language img {
+    width: 20px;
+    border-radius: 8px;
+}
+
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type=radio] + img {
+    cursor: pointer;
+}
+
+[type=radio]:checked + img {
+    opacity: 1;
+}
+
+[type=radio]:not(:checked) + img {
+    opacity: 0.6;
+}
+
+.content input[type=search] {
     width: 80%;
 }
 

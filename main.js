@@ -8,7 +8,7 @@ let win = null;
 async function createWindow () {
     win = new BrowserWindow({
         width: 450,
-        height: 400,
+        height: 420,
         icon: `${__dirname}/app/public/img/icon.ico`,
         darkTheme: true,
         webPreferences: {
