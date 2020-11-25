@@ -11,8 +11,11 @@ async function createWindow () {
         height: 420,
         icon: `${__dirname}/app/public/img/icon.ico`,
         darkTheme: true,
+        frame: false,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            preload: `${__dirname}/app/js/preload.js`
         }
     });
 
@@ -24,10 +27,6 @@ async function createWindow () {
     });
     const choicedColor = await LocalStorageUtils.getStorageAppColor(win);
     win.webContents.send('choiced-color', choicedColor);
-
-    let templateMenu = template.generateMainMenu(app);
-    let mainMenu = Menu.buildFromTemplate(templateMenu);
-    Menu.setApplicationMenu(mainMenu);
 
     tray = new Tray(`${__dirname}/app/public/img/icon.ico`);
     const contextMenu = await template.trayTemplate(win);
