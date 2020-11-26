@@ -29,7 +29,7 @@ async function createWindow () {
     win.webContents.send('choiced-color', choicedColor);
 
     tray = new Tray(`${__dirname}/app/public/img/icon.ico`);
-    const contextMenu = await template.trayTemplate(win);
+    const contextMenu = await template.trayTemplate(app, win);
     let trayMenu = Menu.buildFromTemplate(contextMenu);
     tray.setToolTip('App Tradutor');
     tray.setContextMenu(trayMenu);
