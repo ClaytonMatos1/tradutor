@@ -12,6 +12,10 @@ module.exports = {
         return choicedColor;
     },
 
+    getWindowStorageAppColor (window) {
+        return window.localStorage.getItem(APP_COLOR);
+    },
+
     setStorageSelectedLanguage (window, selected) {
         window.localStorage.setItem(SELECTED_LANGUAGE, selected);
     },

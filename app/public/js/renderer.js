@@ -34,7 +34,8 @@ async function tradutor(text) {
     const checked = document.querySelector('input[name="language"]:checked').value;
     const response = await translate.default(text, {
         from: checked,
-        to: checked == 'en' ? 'pt' : 'en'
+        to: checked == 'en' ? 'pt' : 'en',
+        browers: true
     });
     const data = response.data;
     return data;
@@ -66,11 +67,6 @@ input.addEventListener('click', (ev) => {
     }, 10);
 });
 
-function setBackgroundColor (color) {
-    let body = document.body;
-    body.style.backgroundColor = color;
-}
-
 ipcRenderer.on('change-color', (ev, color) => {
     setBackgroundColor(color);
     LocalStorageUtils.setStorageAppColor(window, color);
@@ -79,6 +75,18 @@ ipcRenderer.on('change-color', (ev, color) => {
 ipcRenderer.on('choiced-color', (ev, color) => {
     setBackgroundColor(color);
 });
+
+function setBackgroundColor (color) {
+    let body = document.body;
+    body.style.backgroundColor = color;
+};
+
+function initBackgroundColor () {
+    let color = LocalStorageUtils.getWindowStorageAppColor(window);
+    color = color ? color : 'antiquewhite';
+    setBackgroundColor(color);
+};
+initBackgroundColor();
 
 const rbLanguages = document.querySelectorAll('input[name="language"]');
 rbLanguages.forEach(item => {
